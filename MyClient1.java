@@ -33,9 +33,12 @@ class MyClient1 {
         String jobType = jobSplit[0];
 
         int blah = 0;
+        ArrayList<ArrayList<String>> revServerList = new ArrayList<ArrayList<String>>();
+        ArrayList<ArrayList<String>> serverList = new ArrayList<ArrayList<String>>();
 
-        //while((!(jobType.equalsIgnoreCase("none")))) {
-           while(blah < 4 ) {
+
+        while((!(jobType.equalsIgnoreCase("none")))) {
+           //while(blah < 4 ) {
 
             if(jobType.equalsIgnoreCase("JOBN")) {
                 System.out.print("Client Says: ");
@@ -51,7 +54,6 @@ class MyClient1 {
                 dout.write(("OK\n").getBytes());
                 dout.flush();
 
-                ArrayList<ArrayList<String>> serverList = new ArrayList<ArrayList<String>>();
                 System.out.println("Servers are: ");
                 for(int i = 0;i < numServers; i++) {
                     str = din.readLine();
@@ -86,7 +88,6 @@ class MyClient1 {
                     ind++;
                 }
 
-                ArrayList<ArrayList<String>> revServerList = new ArrayList<ArrayList<String>>();
                 for(int z = serverList.size() - 1 ;z >= 0; z--) {
                     revServerList.add(serverList.get(z));
                 }
@@ -119,7 +120,9 @@ class MyClient1 {
             jobSplit = str.split(" ");
             jobType = jobSplit[0];
 
-            blah++;
+            revServerList.clear();
+            serverList.clear();
+            //blah++;
         }
 
             // System.out.print("Client Says: ");
